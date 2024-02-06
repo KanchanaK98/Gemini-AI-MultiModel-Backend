@@ -10,9 +10,11 @@
   "author": "Kanchana Kariyawasam",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^3.0.3"
   }
 }
