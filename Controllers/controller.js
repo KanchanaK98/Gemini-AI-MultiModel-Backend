@@ -1,11 +1,11 @@
 exports.createResponse = async (req, res) => {
-    console.log("start response...");
-    console.log(req.file);
+    //console.log("start response...");
+    //console.log(req.file);
     let { file } = req;
     
   
     if (!file) {
-      return res.status(200).json({ message: "Incomplete image inputted", success: false });
+      return res.status(400).json({ message: "Incomplete image inputted", success: false });
     }
 
     let responseText = '';
@@ -30,7 +30,7 @@ exports.createResponse = async (req, res) => {
       // For text-and-image input (multimodal), use the gemini-pro-vision model
         const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 
-        const prompt = "This is a face of a human and what is the emotion this face express?Give me only a expression with only two words";
+        const prompt = "What this image is expressed?";
 
         const allowedMimeTypes = ['image/jpeg', 'image/png'];
         if (!allowedMimeTypes.includes(file.mimetype)) {
@@ -47,7 +47,7 @@ exports.createResponse = async (req, res) => {
           const result = await model.generateContent([prompt, ...imageParts]);
           const response = await result.response;
           responseText = response.text();
-          console.log(responseText);
+          //console.log(responseText);
         
           // Handle response here or store it in a variable for later use
           console.log("Generated response:", responseText);

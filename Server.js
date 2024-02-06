@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 
-const sendResponse = require("./Routes/mainRoute")
+const sendResponse = require("./Routes/route")
 // Enable CORS
 app.use(cors());
 app.use(bodyParser.json());
