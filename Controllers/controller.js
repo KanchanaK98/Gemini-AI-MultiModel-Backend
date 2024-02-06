@@ -1,3 +1,4 @@
+//reference : https://ai.google.dev/tutorials/node_quickstart
 exports.createResponse = async (req, res) => {
     //console.log("start response...");
     //console.log(req.file);
@@ -28,9 +29,11 @@ exports.createResponse = async (req, res) => {
       }
   
       // For text-and-image input (multimodal), use the gemini-pro-vision model
+      // Can use streaming for faster interactions (https://ai.google.dev/tutorials/node_quickstart#streaming)
         const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 
-        const prompt = "What this image is expressed?";
+        // Add prompt which you need to perform with an image
+        const prompt = "What this image is expressed?"; 
 
         const allowedMimeTypes = ['image/jpeg', 'image/png'];
         if (!allowedMimeTypes.includes(file.mimetype)) {
